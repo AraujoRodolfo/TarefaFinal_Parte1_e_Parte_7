@@ -1,0 +1,157 @@
+Atividade 11 Pedro Henrique Silva:
+    using System;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int x;
+
+            Console.WriteLine("Digite um numero para saber o seu quadrado");
+            x = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("O quadrado do número: {0}² é {1}",x,Math.Pow(x,2));
+            Console.ReadKey();
+        }
+    }
+
+Atividade 13 Pedro Henrique Silva:
+    using System;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] matriculas = new string[10];
+            double[] altura = new double[10];
+            int a = 0, c;
+            double maior = 0, menor = 0;
+            do {
+                Matricula(matriculas, altura, a);
+                a++;
+            } while (a < 10);
+            Resultados(matriculas, altura, a, maior, menor);
+            Console.ReadKey();
+        }
+        static void Matricula(string[] matriculas, double[] altura, int a)
+        {
+                Console.WriteLine("Digite o nome do {0}° aluno para matricular", a+1);
+                matriculas[a] = Console.ReadLine();
+          
+                Console.WriteLine("Digite a altura do aluno {0}",matriculas[a]);
+                altura[a] = double.Parse(Console.ReadLine());
+          Console.WriteLine("");
+        }
+        static void Resultados(string[] matriculas, double[] altura, int a, double maior, double menor)
+        {
+            int i, d = 0, e, g = 0;
+            for (i = 0; i < a; i++)
+            {
+                if (i == 0)
+                {
+                    maior = menor;
+                }
+                if (altura[i] > maior)
+                {
+                    maior = altura[i];
+                    d = i;
+                }
+            }
+            for (i = 0; i < a; i++)
+            {
+                if (i == 0)
+                {
+                    menor = altura[i];
+                }
+                if (altura[i] < menor)
+                {
+                    menor = altura[i];
+                    g = i;
+                }
+            }
+            Console.WriteLine("{0} é o maior e tem {1} metros", matriculas[d], maior);
+            Console.WriteLine("{0} é o menor e tem {1} metros", matriculas[g], menor);
+        }
+    }
+
+
+Atividade 14 Pedro Henrique Silva:
+   using System;
+
+   class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] num = new int[5];
+
+            Console.WriteLine("Digite 5 numeros");
+            for(int x = 0; x < 5; x++)
+            {
+
+                Console.WriteLine("Digite o {0}° Numero", x+1);
+                num[x] = int.Parse( Console.ReadLine());
+            }
+            Console.WriteLine("A soma dos 5 numeros é: {0}", (num[0] + num[1] + num[2] + num[3] + num[4]));
+            Console.ReadKey();
+            Console.WriteLine("Os numeros foram digitados na seguinte ordem {0} - {1} - {2} - {3} - {4}", num[0], num[1], num[2], num[3], num[4]) ;
+            Console.ReadKey();
+
+        }
+    }
+
+
+Atividade 47 Pedro Henrique Silva:
+
+using System;
+
+class Program {
+    static void Main(string[] args) {
+        const int tam = 15;
+
+      Aluno[] nome = new Aluno[tam];
+      Aluno[,] nota = new Aluno[tam,2];
+      double[] media = new double[tam];
+      string[] situacao = new string[tam];
+
+    Console.WriteLine("********CADASTRANDO ALUNO********\n");
+    for(int x = 0; x < tam; x++){
+      Console.Write("Digite o nome do {0}°Aluno: ",x+1);
+      nome[x].nome = Console.ReadLine();
+    }
+      for(int l = 0; l < tam; l++){
+        for(int c = 0; c < 2; c++ ){
+          Console.WriteLine("Digite a {0}° do aluno {1}: ",c+1, nome[l].nome);
+          nota[l,c].notas = double.Parse(Console.ReadLine());
+        }
+      }
+      for(int x = 0; x < tam; x++){
+        media[x] = ((nota[x,0].notas + nota[x,1].notas) / 2);
+      }
+
+      Console.Clear();
+
+      Console.WriteLine("********MOSTRANDO REGISTROS*********\n");
+      Console.WriteLine("Nomes\t\t Nota 1\t\t  Nota 2\t\t Média\t\t\t Situação");
+      for(int z = 0; z < tam; z++){
+        if(media[z] > 6.9){
+          situacao[z] = "Aprovado";
+          Console.ForegroundColor = ConsoleColor.Blue;
+        }
+        else if(media[z] < 6.9){
+          situacao[z] = "Reprovado";
+          Console.ForegroundColor = ConsoleColor.Red;
+        }
+        else{
+          Console.ResetColor();
+        }
+        Console.WriteLine("{0}\t\t {1}\t\t\t  {2}\t\t\t\t {3}\t\t\t {4}",nome[z].nome, nota[z,0].notas, nota[z,1].notas, media[z], situacao[z]);
+      }
+     
+    }
+  
+  public struct Aluno{
+    public string nome;
+    public double notas;
+  }
+
+}
